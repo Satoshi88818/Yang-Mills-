@@ -1,0 +1,109 @@
+Yang-Mills Mass Gap: Programme to Prove Uniform Lower Bound on Curvature Inside the Gribov Region Ω
+
+**Document Title:** Research Programme – Achieving inf Ric_BE ≥ Δ_BE > 0 on the Gauge Orbit Space  
+**Author of Programme:** Lamington Roo (first-principles construction, 2026 perspective)  
+**Context:** Building on the proven sectional curvature divergence K_M ∼ C / λ₀ near the Gribov horizon (O'Neill + FP spectral analysis), and the geometric framework proposed by James Squire.  
+**Core Goal:** Establish a strict uniform lower bound on (regularized) curvature inside Ω to enable a Lichnerowicz-type spectral gap → mass gap Δ > 0.  
+**Primary Tool:** Bakry-Émery Ricci curvature with horizon-induced weighting (inspired by Mondal 2023, Moncrief et al., Gribov-Zwanziger quantization).
+
+## Abstract
+
+The sectional curvature of the orbit space M = 𝒜/𝒢 diverges positively as configurations approach the Gribov horizon ∂Ω (where λ₀ → 0). However, a mass gap requires curvature bounded **away from zero everywhere inside** the Gribov region Ω — even in classically weak-field regimes.
+
+Raw Ricci curvature may dip low in such regions, but the physically relevant geometry is weighted by a horizon-repulsive measure. This introduces a drift → the **Bakry-Émery Ricci tensor** Ric_BE = Ric + Hess f (with f encoding horizon penalty) can remain uniformly positive.
+
+This document outlines a concrete, step-by-step programme to prove  
+**inf_{A ∈ Ω} Ric_BE(A) ≥ Δ_BE(g,N) > 0**  
+uniformly, using weighted comparison geometry, Bochner identities, and curvature-dimension conditions in infinite dimensions.
+
+## 1. Why Raw Curvature Is Insufficient – The Weighted Picture
+
+- In principal stratum, raw sectional curvatures are positive near horizon but can approach 0 in weak-coupling directions (small ||A||, almost abelian).
+- Physical path integral restricts to Ω + horizon functional → effective measure μ ≈ exp(-f) vol_g, where f penalizes proximity to ∂Ω (e.g., f ~ dist² or Tr(M_A^{-p})).
+- The relevant curvature operator becomes the **weighted/Bakry-Émery Ricci tensor**:
+
+  Ric_BE(f) = Ric_g + Hess_g f
+
+- Modern theorems (Bakry-Émery–Lichnerowicz, Bakry-Ledoux) extend spectral gap bounds to weighted manifolds if Ric_BE ≥ K > 0 and CD(K, ∞) holds → goal is to prove K = Δ_BE > 0 uniformly.
+
+## 2. Choice of Weight Function f (Horizon Regularization)
+
+Promising candidates (regularized to avoid singularities):
+
+1. f(A) = α ∫ Tr( (M_A^{-1})^p ) d⁴x   (p small, α tuned)
+2. f(A) ≈ β ⋅ dist_M(A, ∂Ω)^2   (geodesic distance proxy via 1/√λ₀ or horizon functional)
+3. f(A) = γ ⋅ sup_{x} Tr( ghost propagator(x,x) )   (Kugo-Ojima inspired)
+
+Goal properties:
+- f → +∞ as λ₀ → 0 (repulsion from horizon)
+- Hess f ≥ c > 0 near boundary + bounded/positive deep inside
+- f smooth enough for Hessian & Bochner formulas
+
+## 3. Step-by-Step Programme
+
+### Step 1: Local Positivity Around Classical Minima
+- Take basepoint A₀ with ||A₀||_{L²} ≪ 1 (almost flat, λ₀ large).
+- Linearize M_A ≈ -Δ (abelian), but non-abelian commutators + global topology induce small positive Hess f.
+- Compute Hess f explicitly via perturbation:
+  - Variation δA → δλ₀ ≈ quadratic form in commutators
+  - Hess f ≥ ε(local) > 0 from mixing of zero modes / instanton-like fluctuations
+- Prove Ric_BE ≥ ε > 0 in geodesic balls B_r(A₀) (small r).
+
+### Step 2: Exploit Horizon as Positivity Barrier
+- Already proven: K_M → +∞ as dist(A, ∂Ω) → 0 (∼ 1/λ₀).
+- Use this to bound Hess f from below near boundary.
+- Apply barrier / comparison principle:
+  - Consider distance function d(A) = inf geodesic length to ∂Ω
+  - Show Hess d² ≥ positive constant (convexity-like) in collar neighborhood of ∂Ω
+  - Patch with interior regions via maximum principle on Ric_BE along minimizing geodesics
+
+### Step 3: Global Control via Bochner & Weitzenböck Identities
+- Derive weighted Bochner formula for the Bakry-Emery Laplacian Δ_f = Δ_g + ∇f · ∇:
+  ```
+  (1/2) Δ_f |∇u|² = |Hess u|² + ⟨∇u, ∇ Δ_f u⟩ + Ric_BE(∇u, ∇u)
+  ```
+- Integrate over Ω (with decay at infinity) → if boundary terms controlled by horizon blow-up, Ric_BE cannot dip too negative without contradicting positivity near ∂Ω.
+- Use integrated curvature identities (analogous to positive mass theorem) to bound inf Ric_BE.
+
+### Step 4: Curvature-Dimension Condition CD(Δ_BE, ∞)
+- Verify (or approximate) CD(K, ∞) for (M, g, μ = e^{-f} vol_g):
+  - Displacement convexity of relative entropy Ent_μ along L²-Wasserstein geodesics
+- If CD(Δ_BE, ∞) holds with Δ_BE > 0, then:
+  - Log-Sobolev inequality ⇒ exponential decay of heat semigroup
+  - Spectral gap ≥ Δ_BE / 2 for -Δ_f
+- This projects to mass gap in quantized theory (via Gribov-Zwanziger or equivalent).
+
+### Step 5: Asymptotics at Spatial Infinity
+- In ℝ⁴, require decay (Sobolev embedding, L²-based spaces).
+- Show Ric_BE → 0 at infinity is incompatible:
+  - Use monotonicity along projected YM gradient flow
+  - Or contradiction via integrated curvature / positive mass analogs
+- Goal: floor on Ric_BE from large-distance behavior.
+
+### Step 6: Validation & Partial Results Roadmap
+- **Lower dimensions first:** Prove uniform Ric_BE > 0 in 2+1D YM (known mass gap).
+- **Lattice proxy:** On large tori, compute discrete orbit-space Ric_BE → check infimum & scaling.
+- **Toy models:** SU(2) on T³ × ℝ, Kaluza-Klein reductions.
+- **Falsifiability:** Seek sequence A_n ∈ Ω with Ric_BE(A_n) → 0 → must hit horizon or infinity → contradict volume finiteness or barrier.
+
+## 4. Expected Difficulty & Timeline (2026 View)
+
+- **Most tractable:** Local positivity + Hessian computation near minima (1–2 years with analytic/numerical support).
+- **Medium:** Barrier patching + Bochner identities.
+- **Hardest:** Rigorous CD(K,∞) in infinite dimensions + infinity control.
+- **Optimistic path:** Conditional uniform bound in 2–3 years → full unconditional in 5–10 years if new infinite-dim tools emerge.
+
+## 5. References & Inspirations
+
+- Mondal, P. (2023). Bakry-Émery Ricci & YM orbit space. *JHEP*.
+- Moncrief et al. (2018–2019). Curvature & mass in reduced YM-Hamiltonian.
+- Bakry, D. & Émery, M. (1985). Diffusions hypercontractives.
+- Bakry, Ledoux, et al. (modern surveys on CD conditions).
+- Gribov-Zwanziger framework; Kugo-Ojima criterion.
+- Squire, J. Geometric framework proposal (original inspiration).
+
+**Status:** Conjectural programme — grounded in existing partial results, but requires significant new analysis in weighted infinite-dimensional geometry.
+
+**Last updated:** Conceptualised March 2026
+```
+
